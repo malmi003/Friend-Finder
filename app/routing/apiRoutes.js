@@ -7,21 +7,11 @@ let fs = require("fs");
 
 let app = express();
 
-//also left off here
 //Friend finder data
 //dummy dogs to start list
 let dogList = dogFriends,
     //dummy people to start list
     humanList = humanFriends;
-
-fs.readFile("data/humanFriends.js", "utf8", function (error, data) {
-    if (error) {
-        return console.log(error);
-    };
-    console.log(data);
-});
-
-
 
 //get route to api/dogList
 app.get("/api/fourLeggedFriendList", function (req, res) {
@@ -44,14 +34,25 @@ app.post("/api/humanFriendList", function (req, res) {
     let newFriend = req.body;
     humanList.push(newFriend);
 
-    // left off here
-    fs.writeFile("./../data/dogFriends", humanList, function (err) {
+    //this is the score comparison logic
+    //need to determine current users score then compare with doggos
+    let currentUserScore = newFriend.score;
+        totalDifference = 0,
+        currentMatch = 50,
+        finalMatch = "";
 
-        if (err) throw err;
 
-        console.log("Content Added!");
-
+    dogList.forEach((item, index) => {
+        item.score.forEach((item, index) => {
+            totalDifference += Math.abs(item - currentUserScore[index]);
+        });
+        if (totalDifference < currentMatch) {
+            currentMatch = totalDifference;
+            finalMatch = item;
+        };
+        totalDifference = 0;
     });
+    console.log(finalMatch);
 
     res.json(newFriend);
 });
