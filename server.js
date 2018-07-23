@@ -11,15 +11,14 @@ let apiRoutes = require("./app/routing/apiRoutes.js")
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-//Friend finder data
-// ==================================================
-let dogList = [],
-    humanList = [];
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //Routes
 // ==================================================
-app.use(htmlRoutes);
 app.use(apiRoutes);
+app.use(htmlRoutes);
 
 // Start server
 // ==================================================

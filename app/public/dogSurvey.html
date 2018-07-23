@@ -31,13 +31,11 @@
                         <input type="phone" class="form-control" id="phone" placeholder="(123)456-7890">
                     </div>
                     <div class="form-group">
-                        <label for="imgPhoto">Link to Image Photo</label>
-                        <input type="imageLink" class="form-control" id="imgPhoto" placeholder="image.com">
+                        <label for="imgUrl">Link to Image Photo</label>
+                        <input type="imageLink" class="form-control" id="imgUrl" placeholder="image.com">
                     </div>
                 </section>
-
-
-
+                <!-- 10 Questions appended here -->
             </form>
         </section>
     </article>
@@ -65,15 +63,33 @@
             };
             $("#form").append("</section>");
         });
-        $("#form").append('<br><a class="btn btn-primary mt-3" href="" id="submit_btn" role="button">Submit</a>');
+        $("#form").append('<br><a class="btn btn-primary mt-4" href="/results/dogMatch" id="submit_btn" role="button">Submit</a>');
 
         $(document).ready(function () {
             $("#submit_btn").on("click", function () {
-                event.preventDefault();
-                let radioValue1 = $("input[name=customRadioInline1]:checked").val();
-                console.log(radioValue1);
-                let radioValue2 = $("input[name=customRadioInline2]:checked").val();
-                console.log(radioValue2);
+                // event.preventDefault();
+
+                let newDog = {
+                    name: $("#name").val().trim(),
+                    phone: $("#phone").val().trim(),
+                    imgUrl: $("#imgUrl").val().trim(),
+                    score: [
+                        $("input[name=customRadioInline1]:checked").val(),
+                        $("input[name=customRadioInline2]:checked").val(),
+                        $("input[name=customRadioInline3]:checked").val(),
+                        $("input[name=customRadioInline4]:checked").val(),
+                        $("input[name=customRadioInline5]:checked").val(),
+                        $("input[name=customRadioInline6]:checked").val(),
+                        $("input[name=customRadioInline7]:checked").val(),
+                        $("input[name=customRadioInline8]:checked").val(),
+                        $("input[name=customRadioInline9]:checked").val(),
+                        $("input[name=customRadioInline10]:checked").val(),
+                    ]
+                };
+
+                $.post("/api/fourLeggedFriendList", newDog).then(function (data) {
+                    console.log(data);
+                });
             });
         });
     </script>

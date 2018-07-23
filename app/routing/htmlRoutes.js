@@ -16,8 +16,11 @@ app.get("/humanSurvey", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/humanSurvey.html"));
 });
 //get result page
-app.get("/results", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/results.html"));
+app.get("/results/dogMatch", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/resultsDog.html"));
+});
+app.get("/results/humanMatch", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/resultsHuman.html"));
 });
 
 //catch-all route to direct any other page to homepage
