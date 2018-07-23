@@ -20,10 +20,8 @@ app.use(bodyParser.json());
 app.use(apiRoutes);
 app.use(htmlRoutes);
 
-// Start server
+// Start our server so that it can begin listening to client requests
 // ==================================================
-
-// Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);

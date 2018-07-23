@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Survey for Doggos</title>
+    <title>Survey for Dogs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -19,7 +19,7 @@
     <article class="container">
         <section class="row">
             <form class="col" id="form">
-                <h2>Survey for Doggos and Puppers</h2>
+                <h2>Survey for Doggos</h2>
                 <section>
                     <h3>About You</h3>
                     <div class="form-group">
@@ -39,6 +39,27 @@
             </form>
         </section>
     </article>
+
+    <!-- Modal -->
+    <div class="modal fade text-center" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="matchModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="matchModalLabel">Your match!</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_btn">Close</button>
+                    <button type="button" class="btn btn-primary" id="home_btn">Back to Home Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p class="text-center mt-5">
             <a href="/api/fourLeggedFriendList">API Doggo List</a> |
@@ -63,13 +84,13 @@
             };
             $("#form").append("</section>");
         });
-        $("#form").append('<br><a class="btn btn-primary mt-4" href="/results/dogMatch" id="submit_btn" role="button">Submit</a>');
+        $("#form").append('<br><button class="btn btn-primary mt-4" id="submit_btn" role="button" data-toggle="modal" data-target="#matchModal">Submit</button>');
 
         $(document).ready(function () {
             $("#submit_btn").on("click", function () {
-                // event.preventDefault();
+                event.preventDefault();
 
-                let newDog = {
+                let newHuman = {
                     name: $("#name").val().trim(),
                     phone: $("#phone").val().trim(),
                     imgUrl: $("#imgUrl").val().trim(),
@@ -87,9 +108,17 @@
                     ]
                 };
 
-                $.post("/api/fourLeggedFriendList", newDog).then(function (data) {
+                $.post("/api/fourLeggedFriendList", newHuman).then(function (data) {
                     console.log(data);
+                    $("#modal-body").html(`<h3>Meet ${data.name}</h3>
+                    <img src="${data.imgUrl}" class="img-thumbnail"></img><br>
+                    Give 'em a call today for more details on your new mate! <br>${data.phone}`)
                 });
+            });
+
+            //redirect to home page
+            $("#home_btn").on("click", function () {
+                window.location.replace("/")
             });
         });
     </script>
