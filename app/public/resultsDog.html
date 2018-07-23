@@ -32,7 +32,11 @@
         </p>
     </footer>
     <script>
-        
+        $.get("/api/fourLeggedFriendList", function(data) {
+            if (data) {
+                console.log(data);
+            }
+        })
     </script>
 
     <!-- Bootstrap -->
