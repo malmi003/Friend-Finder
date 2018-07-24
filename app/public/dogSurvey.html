@@ -19,9 +19,10 @@
     <article class="container">
         <section class="row">
             <form class="col was-validated" id="form">
-                <h2 class="text-center">Survey for Doggos</h2>
+                <h2 class="text-center">&#128394; Survey for Doggos</h2>
+                <hr>
                 <section>
-                    <h3>About You</h3>
+                    <h4>About You</h4>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="name" class="form-control" id="name" placeholder="Name" required>
@@ -68,28 +69,35 @@
         </p>
     </footer>
     <script>
+        // create the question sections through JS, each item in array is Q
         let questions = ["I'm a bit of a handful - probably best if you've got some experience already.", "I'm looking for lots of roommates (kids, family, other pets, etc).", "I have no qualms with strangers.", "I have a lot to say and am not afraid to let the neighbors know.", "I love being active and am looking for an active partner.", "I can hang out all day be myself.", "I consider myself an independent thinker - lots of training required.", "I'm a proper shedder.", "I require frequent grooming.", "I'm a big ole dog."];
         let counter = 0;
         let radioHtml = "";
 
+        //create the html for each Q
         questions.forEach((item, index) => {
             $("#form").append(`<section class="mt-5">
                     <h4>${index + 1}. ${item}</h4> <small>1 completely disagree - 5 completely agree</small>`);
+            //create 5 bubble options for each Q
             for (i = 1; i < 6; i++) {
                 $("#form").append(`<div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline${++counter}" name="customRadioInline${index + 1}" class="custom-control-input" value=${i} required>
                     <label class="custom-control-label" for="customRadioInline${counter}">${i}</label>
                 </div>`)
             };
+            //close out section
             $("#form").append("</section>");
         });
-        $("#form").append('<br><button class="btn btn-primary mt-4" id="submit_btn" role="button" data-toggle="modal" data-target="#matchModal">Submit</button>');
+        //add submit button to section
+        $("#form").append('<br><button class="btn btn-primary mt-4" id="submit_btn" role="button" data-toggle="modal" data-target="#matchModal">Submit &#128270;</button>');
 
         $(document).ready(function () {
+            //on click of submit btn
             $("#submit_btn").on("click", function () {
                 event.preventDefault();
-
-                let newHuman = {
+                
+                // create new dog object from responses
+                let newDog = {
                     name: $("#name").val().trim(),
                     phone: $("#phone").val().trim(),
                     imgUrl: $("#imgUrl").val().trim(),
@@ -106,8 +114,9 @@
                         $("input[name=customRadioInline10]:checked").val(),
                     ]
                 };
-
-                $.post("/api/fourLeggedFriendList", newHuman).then(function (data) {
+                
+                //post that newDog to api route, take response and html() to modal
+                $.post("/api/fourLeggedFriendList", newDog).then(function (data) {
                     console.log(data);
                     $("#modal-body").html(`<h3>Meet ${data.name}</h3>
                     <img src="${data.imgUrl}" class="img-thumbnail"></img><br>
@@ -115,7 +124,7 @@
                 });
             });
 
-            //redirect to home page
+            //redirect to home page on modal
             $("#home_btn").on("click", function () {
                 window.location.replace("/")
             });

@@ -52,4 +52,5 @@ let dogList = [
     }
 ];
 
+//export for use in server.js
 module.exports = dogList;
