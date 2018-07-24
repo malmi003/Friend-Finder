@@ -12,7 +12,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+    <!-- My styles -->
+    <link rel="stylesheet" href="/assets/main.css">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="number" class="form-control" id="phone" placeholder="(123)456-7890" required>
+                        <input type="phone" class="form-control" id="phone" placeholder="(123)456-7890" required>
                     </div>
                     <div class="form-group">
                         <label for="imgUrl">Link to Image Photo</label>
@@ -61,7 +62,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="footer">
         <p class="text-center mt-5">
             <a href="/api/fourLeggedFriendList">API Doggo List</a> |
             <a href="/api/humanFriendList">API Human List</a> |
@@ -91,7 +92,7 @@
             $("#form").append("</section>");
         });
         //add submit button to section
-        $("#form").append('<br><button class="btn btn-primary mt-4" id="submit_btn" role="button" data-toggle="modal" data-target="#matchModal">Submit &#128270;</button>');
+        $("#form").append('<br><button class="btn btn-info mt-4" id="submit_btn" role="button" data-toggle="modal" data-target="#matchModal">Submit &#128270;</button>');
 
         $(document).ready(function () {
             //on click of submit btn

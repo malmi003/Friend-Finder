@@ -3,7 +3,7 @@ humanList = [
     {
         "name": "Jules",
         "phone": "454-234-2342",
-        "imgUrl": "https://images.unsplash.com/photo-1520983563484-68aa32667ee3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2df6d84707983313fdfa075407957c93&auto=format&fit=crop&w=500&q=60",
+        "imgUrl": "https://images.unsplash.com/photo-1504803542671-cb92eb06a148?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0c453a62d33c0c3a2b43fcb44152504f&auto=format&fit=crop&w=500&q=60",
         "score": [
             "3",
             "4",
@@ -18,7 +18,7 @@ humanList = [
         ]
     },
     {
-        "name": "James Barks",
+        "name": "James Barkington",
         "phone": "345-343-3433",
         "imgUrl": "https://images.unsplash.com/photo-1466921583968-f07aa80c526e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=10c2cdddabb33d3900c57b4ee4bfe8ac&auto=format&fit=crop&w=400&q=60",
         "score": [
@@ -37,7 +37,7 @@ humanList = [
     {
         "name": "Caroline",
         "phone": "322-234-2344",
-        "imgUrl": "https://images.unsplash.com/photo-1486322349951-d77344d47581?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d9e1ce6101190b98242b579db60b578&auto=format&fit=crop&w=500&q=60",
+        "imgUrl": "https://images.unsplash.com/photo-1529369388643-37bfaac0a0fd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6a21cd42b6de18a4ece23c4b011be551&auto=format&fit=crop&w=500&q=60",
         "score": [
             "5",
             "4",

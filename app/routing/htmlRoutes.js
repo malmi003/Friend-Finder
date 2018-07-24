@@ -14,8 +14,8 @@ app.get("/humanSurvey", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/humanSurvey.html"));
 });
 //for my stylesheet
-app.get("styles/main.css", function (req, res) {
-    res.sendFile(path.join(__dirname, "styles/main.css"));
+app.get("/assets/main.css", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/assets/main.css"));
 });
 //catch-all route to direct any other page to homepage
 app.get("*", function (req, res) {
