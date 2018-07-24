@@ -18,21 +18,21 @@
 <body>
     <article class="container">
         <section class="row">
-            <form class="col" id="form">
-                <h2>Survey for Doggos</h2>
+            <form class="col was-validated" id="form">
+                <h2 class="text-center">Survey for Doggos</h2>
                 <section>
                     <h3>About You</h3>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="name" class="form-control" id="name" placeholder="Name">
+                        <input type="name" class="form-control" id="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="phone" class="form-control" id="phone" placeholder="(123)456-7890">
+                        <input type="number" class="form-control" id="phone" placeholder="(123)456-7890" required>
                     </div>
                     <div class="form-group">
                         <label for="imgUrl">Link to Image Photo</label>
-                        <input type="imageLink" class="form-control" id="imgUrl" placeholder="image.com">
+                        <input type="imageLink" class="form-control" id="imgUrl" placeholder="image.com" required>
                     </div>
                 </section>
                 <!-- 10 Questions appended here -->
@@ -68,17 +68,16 @@
         </p>
     </footer>
     <script>
-        let questions = ["Something1", "Something2", "Something3", "Something4", "Something5", "Something6", "Something7", "Something8", "Something8", "Something10"];
+        let questions = ["I'm a bit of a handful - probably best if you've got some experience already.", "I'm looking for lots of roommates (kids, family, other pets, etc).", "I have no qualms with strangers.", "I have a lot to say and am not afraid to let the neighbors know.", "I love being active and am looking for an active partner.", "I can hang out all day be myself.", "I consider myself an independent thinker - lots of training required.", "I'm a proper shedder.", "I require frequent grooming.", "I'm a big ole dog."];
         let counter = 0;
         let radioHtml = "";
 
         questions.forEach((item, index) => {
-            $("#form").append(`<section class="mt-3">
-                    <h3>Question ${index + 1}</h3>
-                    <h4>${item}</h4>`);
+            $("#form").append(`<section class="mt-5">
+                    <h4>${index + 1}. ${item}</h4> <small>1 completely disagree - 5 completely agree</small>`);
             for (i = 1; i < 6; i++) {
                 $("#form").append(`<div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline${++counter}" name="customRadioInline${index + 1}" class="custom-control-input" value=${i}>
+                    <input type="radio" id="customRadioInline${++counter}" name="customRadioInline${index + 1}" class="custom-control-input" value=${i} required>
                     <label class="custom-control-label" for="customRadioInline${counter}">${i}</label>
                 </div>`)
             };
@@ -112,7 +111,7 @@
                     console.log(data);
                     $("#modal-body").html(`<h3>Meet ${data.name}</h3>
                     <img src="${data.imgUrl}" class="img-thumbnail"></img><br>
-                    Give 'em a call today for more details on your new mate! <br>${data.phone}`)
+                    Time to reach out to your new mate! <br>${data.phone}`)
                 });
             });
 

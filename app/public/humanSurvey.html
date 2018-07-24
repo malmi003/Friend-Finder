@@ -18,21 +18,21 @@
 <body>
     <article class="container">
         <section class="row">
-            <form class="col" id="form">
-                <h2>Survey for Humans</h2>
+            <form class="col was-validated" id="form">
+                <h2 class="text-center">Survey for Humans</h2>
                 <section>
                     <h3>About You</h3>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="name" class="form-control" id="name" placeholder="Name">
+                        <input type="name" class="form-control" id="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="phone" class="form-control" id="phone" placeholder="(123)456-7890">
+                        <input type="number" class="form-control" id="phone" placeholder="(123)456-7890" required>
                     </div>
                     <div class="form-group">
                         <label for="imgUrl">Link to Image Photo</label>
-                        <input type="imageLink" class="form-control" id="imgUrl" placeholder="image.com">
+                        <input type="imageLink" class="form-control" id="imgUrl" placeholder="image.com" required>
                     </div>
                 </section>
                 <!-- 10 Questions appended here -->
@@ -68,17 +68,18 @@
         </p>
     </footer>
     <script>
-        let questions = ["Something1", "Something2", "Something3", "Something4", "Something5", "Something6", "Something7", "Something8", "Something8", "Something10"];
+        let questions = ["I'm an experienced dog owner.", "I'm looking for a dog good with roommates (kids, family, other pets, etc).", "I'd prefer friendly over protective.", "I (and my neighbors) can tolerate a lot of barking.", "I love being active and am looking for an active partner.", "My dog will often spend extended periods of time (more than 4 hours) alone.", "I'm prepared to put in considerable effort training the dog.", "Shedding is no problem for me.", "Frequent grooming is no problem.", "I love big ole dogs."];
         let counter = 0;
         let radioHtml = "";
 
         questions.forEach((item, index) => {
             $("#form").append(`<section class="mt-3">
-                    <h3>Question ${index + 1}</h3>
+                    <h3 class="mt-5">Selection ${index + 1}</h3>
+                    <small>1 completely disagree - 5 completely agree</small>
                     <h4>${item}</h4>`);
             for (i = 1; i < 6; i++) {
                 $("#form").append(`<div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline${++counter}" name="customRadioInline${index + 1}" class="custom-control-input" value=${i}>
+                    <input type="radio" id="customRadioInline${++counter}" name="customRadioInline${index + 1}" class="custom-control-input" value=${i} required>
                     <label class="custom-control-label" for="customRadioInline${counter}">${i}</label>
                 </div>`)
             };
@@ -113,7 +114,7 @@
                     $("#modal-body").html(`<h3>Meet ${data.name}</h3>
                     <img src="${data.imgUrl}" class="img-thumbnail"></img>
                     <br>
-                    <p>Give 'em a call today for more details on your new mate! <br>${data.phone}</p>`)
+                    <p>Time to reach out to your new mate! <br>${data.phone}</p>`)
                 });
             });
 
